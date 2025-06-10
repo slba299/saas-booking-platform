@@ -41,7 +41,7 @@ export default function AddProjectForm() {
 };
 
 Reply
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      https://saas-backend-r3hg.onrender.com
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: projectName, description }),
