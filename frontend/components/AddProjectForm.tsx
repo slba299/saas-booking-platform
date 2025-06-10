@@ -9,10 +9,38 @@ export default function AddProjectForm() {
   const [success, setSuccess] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+  e.preventDefault();
+  setLoading(true);
+  setSuccess(false);
 
-    try {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: projectName,
+        description,
+        dueDate: (document.querySelector('input[type="date"]') as HTMLInputElement)?.value,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to add project');
+    }
+
+    setSuccess(true);
+    setProjectName('');
+    setDescription('');
+    setLoading(false);
+  } catch (error) {
+    console.error('Error submitting project:', error);
+    setLoading(false);
+  }
+};
+
+Reply
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -66,4 +94,3 @@ export default function AddProjectForm() {
     </form>
   )
 }
-
