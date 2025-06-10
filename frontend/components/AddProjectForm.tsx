@@ -14,7 +14,7 @@ export default function AddProjectForm() {
   setSuccess(false);
 
   try {
-    const res = await fetch(`https:??saas-backend-3h9g.onrender.com/api/projects',{
+    const res = await fetch(`https://saas-backend-3h9g.onrender.com/api/projects',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
