@@ -18,5 +18,3 @@ app.post('/api/projects', (req, res) => {
   // Just respond with success for now
   res.status(201).json({ message: 'Project created!' });
 });
-
-Reply
