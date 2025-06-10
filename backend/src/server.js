@@ -11,3 +11,12 @@ app.get('/api/projects', (req, res) => {
 });
 
 app.listen(5000, () => console.log('Backend running on port 5000'));
+app.post('/api/projects', (req, res) => {
+  const { name, description, dueDate } = req.body;
+  console.log('New project:', { name, description, dueDate });
+
+  // Just respond with success for now
+  res.status(201).json({ message: 'Project created!' });
+});
+
+Reply
